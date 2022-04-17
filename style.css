@@ -10,7 +10,13 @@ body {
     font-size: min(40px, 4vw);
     overflow: hidden;
 }
-
+img{
+    transition: transform 0.05s ease-in-out;
+}
+img:hover{
+    filter: drop-shadow(3px 3px 5px rgba(255,255,255,0.5));
+    transform: translateY(-2px);
+}
 span.cursor-blink {
     border-right: .05em solid;
     animation: caret 1s steps(1) infinite;
