@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     var desc = document.getElementById('description');
     desc.style.height = window.innerHeight + 'px';
 
-    var dataText = ["Hello,", "My name is Duncan", "I like to code", "Check out some of my projects and interests:"];
+    var dataText = ["Hello!", "My name is Duncan", "Check out some of my projects and interests:"];
 
     function typeWriter(text, i, fnCallback) {
         if (i < (text.length)) {
@@ -19,15 +19,15 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
             setTimeout(function () {
                 typeWriter(text, i + 1, fnCallback)
-            }, 30);
+            }, 20);
         }
         else if (typeof fnCallback == 'function') {
-            setTimeout(fnCallback, 450);
+            setTimeout(fnCallback, 350);
         }
     }
     function showDescription() {
         document.querySelector("#description").style.display = "block";
-        document.querySelector("#description").animate([{'opacity': 0}, {'opacity': 1}], {duration: 500});
+        document.querySelector("#description").animate([{'height': 0}, {'height': '100%'}], {duration: 400});
         document.querySelector("#description").style.opacity = 1;
     }
     function StartTextAnimation(i) {
