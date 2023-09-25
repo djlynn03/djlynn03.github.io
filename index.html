@@ -1,130 +1,225 @@
 <html>
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
-  </head>
 
-  <body onresize="resize()">
-    <div id="header"></div>
-    <div id="description">
-      <div id="left">
-        Languages:
-        <ul>
-          <li>Python</li>
-          <li>Java</li>
-          <li>C++</li>
-          <li>Ruby</li>
-          <li>Dart</li>
-          <li>HTML, CSS, JavaScript</li>
-        </ul>
-        Libraries, Frameworks, and Services:
-        <ul>
-          <li>Angular</li>
-          <li>Django</li>
-          <li>Node.js</li>
-          <li>Apache Spring</li>
-          <li>jQuery</li>
-          <li>Bootstrap</li>
-          <li>Amazon AWS</li>
-          <li>Google Cloud</li>
-          <li>Docker</li>
-          <li>Microsoft Azure</li>
-          <li>Jenkins</li>
-          <li>Git</li>
-          <li>PostgreSQL</li>
-          <li>Microsoft Power Platform</li>
-          <li>Flutter</li>
-          <li>React</li>
-          <li>CI/CD</li>
-        </ul>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style></style>
+    <script>
+      var centerX = NaN;
+      var centerY = NaN;
+      document.addEventListener("mousemove", (event) => {
+        const { clientX, clientY } = event;
+        centerX = window.innerWidth / 2;
+        centerY = window.innerHeight / 2;
+
+        const offsetX = ((clientX - centerX) * 25) / window.innerWidth;
+        const offsetY = ((clientY - centerY) * 25) / window.innerHeight;
+
+        document.body.style.backgroundPositionX = offsetX + "px";
+        document.body.style.backgroundPositionY = offsetY + "px";
+      });
+
+    </script>
+  </head>
+  <body id="body" style="display: flex">
+    <div class="wrapper">
+      <div class="tv">
+        <iframe
+          id="serviceFrameSend"
+          src="./TVScreen.html"
+          width="300"
+          height="300"
+          frameborder="0"
+        >
+        </iframe>
+        <img src="./img/tv3.webp" width="400px" id="computer" />
       </div>
-      <div id="right">
-        <div id="project-list">
-          <a class="project-item" href="https://datablu.net" target="_blank">
-            <span class="project-title">DataBlu LLC</span>
-            <br />
-            Co-Founded a company to develop websites and applications for small
-            businesses and organizations in the Kansas City area.
-          </a>
-          <a
-            class="project-item"
-            href="https://github.com/djlynn03/PyDashCam"
-            target="_blank"
-          >
-            <span class="project-title">PyDashCam</span>
-            <br />
-            Driver code and tutorial for a dash cam using a Raspberry Pi.
-            Written in Python and utilizes some basic circuitry.
-          </a>
-          <a
-            class="project-item"
-            href="https://github.com/djlynn03/wordle-ai"
-            target="_blank"
-          >
-            <span class="project-title">Wordle AI</span>
-            <br />
-            Python AI that can beat the game Wordle with a 99.7% success rate,
-            using an average of 3.67 guesses per game.
-          </a>
-          <a
-            class="project-item"
-            href="https://github.com/djlynn03/ku-ieee-ledmatrix"
-            target="_blank"
-          >
-            <span class="project-title">LED Matrix Cube</span>
-            <br />
-            Driver for a 32x32x32 LED matrix cube to display images, games, and
-            text. Written in Python using Cython.
-          </a>
-          <a
-            class="project-item"
-            href="https://github.com/DerekZhang0000/OctordleBot"
-            target="_blank"
-          >
-            <span class="project-title">Octordle Bot</span>
-            <br />
-            Python AI to beat the game Octordle, a spinoff of Wordle, with a
-            99.7% success rate and an average of 11.17 guesses per game.
-          </a>
-          <a
-            class="project-item"
-            href="https://github.com/djlynn03/Diep-Vision"
-            target="_blank"
-          >
-            <span class="project-title">Diep Vision</span>
-            <br />
-            Computer Vision and Machine Learning project using PyTorch and
-            OpenCV to detect and track objects on the screen and learn how to
-            play the game Diep.io.
-          </a>
-          <a class="project-item">
-            <span class="project-title">PoliScorer</span>
-            <br />
-            Social media website to provide a platform for Americans to see
-            other viewpoints and opinions on politics, as well as learn about
-            their legislators and current elections. (ARCHIVED)
-          </a>
-          <a class="project-item">
-            <span class="project-title">PicNote</span>
-            <br />
-            Website that converts images of lecture slides, textbook pages,
-            notes, etc. into a word document including images and transcribed
-            text. Built using Google Cloud Run and Google Cloud Vision.
-            (ARCHIVED)
-          </a>
+      <div class="container window-border">
+        <div class="container-header">
+          <div class="header-title">
+            <img src="./img/question-mark.png" width="24px" />
+            <span> About </span>
+          </div>
+          <div class="menu-buttons">
+            <div class="minimize window-border"></div>
+            <div class="maximize window-border"></div>
+            <div class="close window-border">X</div>
+          </div>
+        </div>
+        <div class="container-body">
+          <h5 style="margin: 5px 0">
+            <span class="icon-before">
+              <img src="./img/ku.png" />University of Kansas<br />Computer Science
+              '24</span
+            ><br />
+            Full-Stack & ML<br /><br />
+            I like making cool stuff
+          </h5>
         </div>
       </div>
-    </div>
-    <div id="footer">
-      <a href="https://www.linkedin.com/in/duncan-lynn/" target="_blank"
-        ><img src="img/linkedin.png" alt="linkedin" width="50" height="50"
-      /></a>
-      <a href="https://github.com/djlynn03" target="_blank"
-        ><img src="img/github.png" alt="github" width="50" height="50"
-      /></a>
-      <a href="mailto:djlynn03@gmail.com" target="_blank"
-        ><img src="img/email.png" alt="email" width="50" height="50"
-      /></a>
+      <div class="container window-border">
+        <div class="container-header">
+          <div class="header-title">
+            <img src="./img/skills.png" width="24px" />
+            <span> Skills.exe </span>
+          </div>
+          <div class="menu-buttons">
+            <div class="minimize window-border"></div>
+            <div class="maximize window-border"></div>
+            <div class="close window-border">X</div>
+          </div>
+        </div>
+        <div class="container-body">
+          <div class="list">
+            <div class="list-item">
+              <div class="bullet-icon">
+                <img class="bullet" src="./img/language.png" />
+                languages
+              </div>
+              <div class="separated-text">
+                <span>Java</span>
+                <span>Python</span>
+                <span>TypeScript</span>
+                <span>C#</span>
+                <span>C++</span>
+                <span>Ruby</span>
+                <span>SQL</span>
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="bullet-icon">
+                <img class="bullet" src="./img/library.png" />
+                frameworks
+              </div>
+              <div class="separated-text">
+                <span>Angular</span>
+                <span>React</span>
+                <span>React Native</span>
+                <span>Django</span>
+                <span>Flask</span>
+                <span>Express</span>
+              </div>
+            </div>
+            <div class="list-item">
+              <div class="bullet-icon">
+                <img class="bullet" src="./img/infra.png" />
+                infrastructure
+              </div>
+              <div class="separated-text">
+                <span>AWS</span>
+                <span>GCP</span>
+                <span>Azure</span>
+                <span>Git</span>
+                <span>Docker</span>
+                <span>Jenkins</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container window-border">
+        <div class="container-header">
+          <div class="header-title">
+            <img src="./img/windows.png" width="24px" />
+            <span> Projects </span>
+          </div>
+          <div class="menu-buttons">
+            <div class="minimize window-border"></div>
+            <div class="maximize window-border"></div>
+            <div class="close window-border">X</div>
+          </div>
+        </div>
+        <div class="container-body">
+          <div class="projects">
+            <span>
+              <a href="https://kuieee.github.io/" target="_blank"
+                >KU IEEE Website</a
+              >
+              <br /><small> Website for the KU branch of IEEE </small>
+            </span>
+            <span>
+              <a href="https://github.com/djlynn03/CFB-Rankings" target="_blank"
+                >CFB Ranking Algorithm</a
+              ><br /><small>
+                Advanced algorithm for predicting College Football rankings
+              </small>
+            </span>
+            <span>
+              <a href="https://github.com/djlynn03/RC-Drone" target="_blank"
+                >RC Drone</a
+              >
+              <br /><small> 3D printed drone with custom software</small>
+            </span>
+            <span>
+              <a
+                href="https://marketplace.visualstudio.com/items?itemName=djlynn03.insert-color"
+                target="_blank"
+                >insert-color</a
+              ><br /><small>
+                VSCode extension to add a color to the current file (700+
+                downloads)
+              </small>
+            </span>
+            <span>
+              <a
+                href="https://marketplace.visualstudio.com/items?itemName=djlynn03.add-to-git-ignore"
+                target="_blank"
+                >add to gitignore</a
+              ><br /><small>
+                VSCode extension to add a file to .gitignore (1200+ downloads)
+              </small>
+            </span>
+            <span>
+              <a href="https://github.com/djlynn03/wordle-ai" target="_blank"
+                >Wordle AI</a
+              ><br /><small> Solves Wordle with over 97% accuracy </small>
+            </span>
+            <span>
+              <a href="https://github.com/djlynn03/PyDashCam" target="_blank"
+                >PyDashCam</a
+              ><br /><small>
+                Dash cam driver for a Raspberry Pi, compatible with USB webcams
+              </small>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="container window-border">
+        <div class="container-header">
+          <div class="header-title">
+            <img src="./img/file.png" width="24px" />
+            <span> Explorer </span>
+          </div>
+          <div class="menu-buttons">
+            <div class="minimize window-border"></div>
+            <div class="maximize window-border"></div>
+            <div class="close window-border">X</div>
+          </div>
+        </div>
+        <div class="search-bar">
+          <img src="./img/hdd.png" height="24" />C:\Users\DuncanLynn\Internships
+        </div>
+        <div class="container-body container-body-white">
+          <div class="file-item"><img src="./img/amazon.png" />Amazon</div>
+          <div class="file-item">
+            <img src="./img/compass.png" />Compass<br />Minerals
+          </div>
+          <div class="file-item">
+            <img src="./img/mazuma.png" />Mazuma<br />Credit<br />Union
+          </div>
+          <div class="file-item"><img src="./img/cerner.png" />Cerner</div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

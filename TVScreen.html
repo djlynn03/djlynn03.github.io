@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .vhs {
+        position: absolute;
+        font-family: "Press Start 2P", cursive;
+        width: 100%;
+        height: 100%;
+        background: #171da8;
+        overflow: hidden;
+        animation: blue-me 5ms infinite;
+      }
+      .vhs:after {
+        box-shadow: inset 0 0 3em rgba(0, 0, 0, 0.75);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        content: "";
+      }
+
+      @keyframes blue-me {
+        28% {
+          background: #171da8;
+        }
+        30% {
+          background: rgba(#171da8, 0.95);
+        }
+        33% {
+          background: #171da8;
+        }
+        34% {
+          background: rgba(#171da8, 0.9);
+        }
+        35% {
+          background: #171da8;
+        }
+      }
+
+      .vhs-message {
+        animation: track 5ms infinite;
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      h1 {
+        position: absolute;
+        font-size: 12vw;
+        left: 0;
+        filter: blur(2px);
+        color: #fff;
+        color: #fff;
+        text-shadow: 1px 3px green, -2px -3px red;
+      }
+      h1:nth-child(2) {
+        left: 60%;
+      }
+
+      .vhs-message span {
+        animation: blur 30ms infinite, flick 50ms infinite, jump 50ms infinite;
+      }
+      @keyframes blur {
+        0% {
+          filter: blur(1px);
+          opacity: 0.8;
+        }
+        50% {
+          filter: blur(1px);
+          opacity: 1;
+        }
+        100% {
+          filter: blur(1px);
+          opacity: 0.8;
+        }
+      }
+      @keyframes flick {
+        50% {
+          left: 2px;
+        }
+        51% {
+          left: 0;
+        }
+      }
+      @keyframes jump {
+        30% {
+          top: 10px;
+        }
+        31% {
+          top: 0;
+        }
+      }
+      @keyframes track {
+        40% {
+          opacity: 1;
+          top: 0;
+          left: 0;
+          transform: scale(1, 1);
+          transform: skew(0, 0);
+        }
+        41% {
+          opacity: 0.8;
+          top: 0px;
+          left: -100px;
+          transform: scale(1, 1.2);
+          transform: skew(50deg, 0);
+        }
+        42% {
+          opacity: 0.8;
+          top: 0px;
+          left: 100px;
+          transform: scale(1, 1.2);
+          transform: skew(-80deg, 0);
+        }
+        43% {
+          opacity: 1;
+          top: 0;
+          left: 0;
+          transform: scale(1, 1);
+          transform: skew(0, 0);
+        }
+      }
+
+      .screen-bottom {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+
+      .line {
+        width: 100%;
+        height: 3px;
+        position: relative;
+        animation: appear 1s infinite, flick 1s infinite, big-jump 5ms infinite;
+      }
+      .white {
+        background: white;
+        position: relative;
+        top: 0;
+        left: 0;
+        height: 4px;
+      }
+      .red {
+        background: red;
+        position: relative;
+        top: 0;
+        left: 0;
+        height: 1px;
+      }
+      .green {
+        background: green;
+        position: relative;
+        top: 0;
+        left: 0;
+        height: 1px;
+      }
+      @keyframes appear {
+        0% {
+          filter: blur(5px);
+          opacity: 0.85;
+        }
+        50% {
+          filter: blur(3px);
+          opacity: 0.85;
+        }
+        100% {
+          filter: blur(4px);
+          opacity: 0.85;
+        }
+      }
+
+      @keyframes big-jump {
+        0% {
+          top: 0;
+        }
+        10% {
+          top: -100px;
+        }
+        12% {
+          top: 0;
+        }
+        54% {
+          top: 0;
+        }
+        55% {
+          top: -300px;
+        }
+        56% {
+          top: 0;
+        }
+        86% {
+          top: 0;
+        }
+        87% {
+          top: -600px;
+        }
+        88% {
+          top: 0;
+        }
+      }
+
+      #tv {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        animation: showHide 3s infinite;
+        z-index: 1;
+      }
+
+      #tv {
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
+      }
+
+      @keyframes showHide {
+        1% {
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        19% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+      .badSignal {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    <script>
+      function init() {
+        "use strict";
+
+        var canvas = document.querySelector("#tv");
+        if (!canvas) {
+          return;
+        }
+        var context = canvas.getContext("gl") || canvas.getContext("2d"),
+          scaleFactor = 2.5, // Noise size
+          samples = [],
+          sampleIndex = 0,
+          scanOffsetY = 0,
+          scanSize = 0,
+          FPS = 50,
+          scanSpeed = FPS * 15, // 15 seconds from top to bottom
+          SAMPLE_COUNT = 10;
+
+        window.onresize = function () {
+          canvas.width = canvas.offsetWidth / scaleFactor;
+          canvas.height =
+            canvas.width / (canvas.offsetWidth / canvas.offsetHeight);
+          scanSize = canvas.offsetHeight / scaleFactor / 3;
+
+          samples = [];
+          for (var i = 0; i < SAMPLE_COUNT; i++)
+            samples.push(
+              generateRandomSample(context, canvas.width, canvas.height)
+            );
+        };
+
+        function interpolate(x, x0, y0, x1, y1) {
+          return y0 + (y1 - y0) * ((x - x0) / (x1 - x0));
+        }
+
+        function generateRandomSample(context, w, h) {
+          var intensity = [];
+          var random = 0;
+          var factor = h / 50;
+          var trans = 1 - Math.random() * 0.05;
+
+          var intensityCurve = [];
+          for (var i = 0; i < Math.floor(h / factor) + factor; i++)
+            intensityCurve.push(Math.floor(Math.random() * 15));
+
+          for (var i = 0; i < h; i++) {
+            var value = interpolate(
+              i / factor,
+              Math.floor(i / factor),
+              intensityCurve[Math.floor(i / factor)],
+              Math.floor(i / factor) + 1,
+              intensityCurve[Math.floor(i / factor) + 1]
+            );
+            intensity.push(value);
+          }
+
+          var imageData = context.createImageData(w, h);
+          for (var i = 0; i < w * h; i++) {
+            var k = i * 4;
+            var color = Math.floor(36 * Math.random());
+            // Optional: add an intensity curve to try to simulate scan lines
+            color += intensity[Math.floor(i / w)];
+            imageData.data[k] =
+              imageData.data[k + 1] =
+              imageData.data[k + 2] =
+                color;
+            imageData.data[k + 3] = Math.round(255 * trans);
+          }
+          return imageData;
+        }
+
+        function render() {
+          context.putImageData(samples[Math.floor(sampleIndex)], 0, 0);
+
+          sampleIndex += 20 / FPS; // 1/FPS == 1 second
+          if (sampleIndex >= samples.length) sampleIndex = 0;
+
+          var grd = context.createLinearGradient(
+            0,
+            scanOffsetY,
+            0,
+            scanSize + scanOffsetY
+          );
+
+          grd.addColorStop(0, "rgba(255,255,255,0)");
+          grd.addColorStop(0.1, "rgba(255,255,255,0)");
+          grd.addColorStop(0.2, "rgba(255,255,255,0.2)");
+          grd.addColorStop(0.3, "rgba(255,255,255,0.0)");
+          grd.addColorStop(0.45, "rgba(255,255,255,0.1)");
+          grd.addColorStop(0.5, "rgba(255,255,255,1.0)");
+          grd.addColorStop(0.55, "rgba(255,255,255,0.55)");
+          grd.addColorStop(0.6, "rgba(255,255,255,0.25)");
+          //grd.addColorStop(0.8, 'rgba(255,255,255,0.15)');
+          grd.addColorStop(1, "rgba(255,255,255,0)");
+
+          context.fillStyle = grd;
+          context.fillRect(
+            0,
+            scanOffsetY,
+            canvas.width,
+            scanSize + scanOffsetY
+          );
+          context.globalCompositeOperation = "lighter";
+
+          scanOffsetY += canvas.height / scanSpeed;
+          if (scanOffsetY > canvas.height) scanOffsetY = -(scanSize / 2);
+
+          window.requestAnimationFrame(render);
+        }
+        window.onresize();
+        window.requestAnimationFrame(render);
+      }
+    </script>
+  </head>
+  <body>
+    <canvas id="tv"></canvas>
+    <div class="badSignal">
+      <div class="vhs">
+        <div class="vhs-message">
+          <span
+            style="
+              display: flex;
+              justify-content: center;
+              width: 100%;
+              align-items: center;
+              height: 100%;
+              margin-left: 32px;
+            "
+          >
+            <h1>DUNCAN<br /><br />LYNN</h1>
+          </span>
+        </div>
+        <div class="screen-bottom">
+          <div class="line">
+            <div class="red"></div>
+            <div class="white"></div>
+            <div class="green"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      init();
+    </script>
+  </body>
+</html>
